@@ -22,6 +22,10 @@
     <h3>{{ customer.firstName }} {{ customer.lastName }}</h3>
     <p>Email: {{ customer.email }}</p>
     <p>Phone: {{ customer.phone }}</p>
+
+    <a [routerLink]="['/customer', customer.customerId]">
+      View Details
+    </a>
   </div>
 }
 
@@ -45,4 +49,14 @@
 <!-- PROJECT 3: ADD CUSTOMER FORM -->
 <app-p3-form></app-p3-form>
 
+<!-- PROJECT 4: DELETE CUSTOMERS -->
 <app-p4-delete></app-p4-delete>
+
+<!-- PROJECT 9: SHOPPING CART -->
+<app-shopping-cart></app-shopping-cart>
+
+<!-- PROJECT 9: EDIT CUSTOMERS -->
+<app-edit-customer></app-edit-customer>
+
+<!-- CUSTOMER DETAILS PAGE -->
+<router-outlet></router-outlet>

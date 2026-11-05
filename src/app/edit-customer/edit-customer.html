@@ -1,0 +1,87 @@
+
+<h2>Project 9 - Edit Customers</h2>
+
+<h3>Select a Customer to Edit</h3>
+
+@for (customer of customers; track customer.customerId) {
+  <div class="customer-card">
+
+    <h4>{{ customer.firstName }} {{ customer.lastName }}</h4>
+
+    <p>Email: {{ customer.email }}</p>
+    <p>Phone: {{ customer.phone }}</p>
+
+    <button type="button" (click)="selectCustomer(customer)">
+      Edit Customer
+    </button>
+
+  </div>
+} @empty {
+  <p>No customers available.</p>
+}
+
+<hr>
+
+<!-- EDIT CUSTOMER FORM -->
+@if (selectedCustomer) {
+
+  <h3>Edit Customer Information</h3>
+
+  <form (ngSubmit)="updateCustomer()">
+
+    <div>
+      <label for="firstName">First Name:</label>
+      <input
+        id="firstName"
+        type="text"
+        name="firstName"
+        [(ngModel)]="selectedCustomer.firstName"
+        required
+      >
+    </div>
+
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input
+        id="lastName"
+        type="text"
+        name="lastName"
+        [(ngModel)]="selectedCustomer.lastName"
+        required
+      >
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        [(ngModel)]="selectedCustomer.email"
+        required
+      >
+    </div>
+
+    <div>
+      <label for="phone">Phone:</label>
+      <input
+        id="phone"
+        type="tel"
+        name="phone"
+        [(ngModel)]="selectedCustomer.phone"
+        required
+      >
+    </div>
+
+    <br>
+
+    <button type="submit">
+      Save Changes
+    </button>
+
+    <button type="button" (click)="cancelEdit()">
+      Cancel
+    </button>
+
+  </form>
+}

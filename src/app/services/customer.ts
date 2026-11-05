@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
 
@@ -30,17 +31,31 @@ export class CustomerService {
     }
   ];
 
-    getCustomers(): Customer[] {
+  // GET ALL CUSTOMERS
+  getCustomers(): Customer[] {
     return this.customers;
   }
 
+  // ADD CUSTOMER
   addCustomer(customer: Customer): void {
     this.customers.push(customer);
   }
 
+  // DELETE CUSTOMER
   deleteCustomer(index: number): void {
     if (index >= 0 && index < this.customers.length) {
       this.customers.splice(index, 1);
+    }
+  }
+
+  // UPDATE CUSTOMER
+  updateCustomer(updatedCustomer: Customer): void {
+    const customer = this.customers.find(
+      customer => customer.customerId === updatedCustomer.customerId
+    );
+
+    if (customer) {
+      Object.assign(customer, updatedCustomer);
     }
   }
 }

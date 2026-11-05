@@ -1,0 +1,14 @@
+
+<h2>Customer Details</h2>
+
+@if (customer) {
+  <div class="customer-card">
+    <h3>{{ customer.firstName }} {{ customer.lastName }}</h3>
+
+    <p>Customer ID: {{ customer.customerId }}</p>
+    <p>Email: {{ customer.email }}</p>
+    <p>Phone: {{ customer.phone }}</p>
+  </div>
+} @else {
+  <p>Customer not found.</p>
+}
